@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexandre Audibert – Chercheur IA & Deep Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #080c18;
+      --bg2:     #0d1224;
+      --bg3:     #141a30;
+      --accent:  #00d4ff;
+      --accent2: #7c3aed;
+      --accent3: #10b981;
+      --amber:   #f59e0b;
+      --text:    #e2e8f0;
+      --muted:   #64748b;
+      --border:  rgba(0,212,255,0.13);
+      --mono:    'Space Mono', monospace;
+      --sans:    'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,12,24,0.97);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+    .nav-links { display: flex; gap: 1.8rem; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 11px;
+      text-decoration: none;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem 2.5rem 2.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 0.6rem;
+      letter-spacing: -1.5px;
+    }
+    .hero h1 strong {
+      color: var(--accent);
+      font-weight: 700;
+      display: block;
+    }
+    .hero-sub {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent2);
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent);
+      color: #080c18;
+      padding: 0.65rem 1.6rem;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 1px;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.65rem 1.6rem;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 12px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      display: inline-block;
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); }
+
+    .hero-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      padding: 1.3rem 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      min-width: 210px;
+    }
+    .hero-contact-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .hero-contact a,
+    .hero-contact span {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: color 0.2s;
+    }
+    .hero-contact a:hover { color: var(--accent); }
+    .hero-contact .icon { font-style: normal; width: 14px; text-align: center; }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex;
+      gap: 2.5rem;
+      padding: 0 2.5rem 3rem;
+      max-width: 960px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat { border-left: 2px solid var(--accent); padding-left: 1.1rem; }
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 1.7rem;
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-num sup { font-size: 1rem; }
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 3rem 2.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .section-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { display: flex; flex-direction: column; gap: 1.1rem; }
+    .pub-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      gap: 1.3rem;
+      align-items: flex-start;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .pub-card:hover { border-color: rgba(0,212,255,0.35); transform: translateY(-1px); }
+    .pub-badge {
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 4px 9px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+    .pub-badge.conf    { background: rgba(0,212,255,0.08);   color: var(--accent);  border: 1px solid rgba(0,212,255,0.2); }
+    .pub-badge.preprint{ background: rgba(124,58,237,0.08);  color: #a78bfa;        border: 1px solid rgba(124,58,237,0.2); }
+    .pub-badge.thesis  { background: rgba(16,185,129,0.08);  color: var(--accent3); border: 1px solid rgba(16,185,129,0.2); }
+    .pub-badge.collab  { background: rgba(245,158,11,0.08);  color: var(--amber);   border: 1px solid rgba(245,158,11,0.2); }
+    .pub-content { flex: 1; min-width: 0; }
+    .pub-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+      line-height: 1.45;
+    }
+    .pub-authors { font-size: 12px; color: var(--muted); margin-bottom: 0.3rem; line-height: 1.6; }
+    .pub-authors strong { color: var(--accent); }
+    .pub-venue {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent2);
+      margin-bottom: 0.55rem;
+    }
+    .pub-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-bottom: 0.7rem; }
+    .pub-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+    .pub-link:hover { opacity: 0.75; }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.3rem;
+    }
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: border-color 0.3s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .project-card:hover { border-color: rgba(0,212,255,0.4); transform: translateY(-2px); }
+    .project-card:hover::before { opacity: 1; }
+    .proj-emoji { font-size: 22px; margin-bottom: 1rem; display: block; }
+    .proj-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--text); }
+    .proj-org {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 0.6rem;
+    }
+    .proj-desc { font-size: 12.5px; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      letter-spacing: 1px;
+    }
+    .tag.c { background: rgba(0,212,255,0.07);  color: var(--accent);  border: 1px solid rgba(0,212,255,0.18); }
+    .tag.p { background: rgba(124,58,237,0.07); color: #a78bfa;        border: 1px solid rgba(124,58,237,0.18); }
+    .tag.g { background: rgba(16,185,129,0.07); color: var(--accent3); border: 1px solid rgba(16,185,129,0.18); }
+    .proj-metric {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent3);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 1.1rem; }
+    .exp-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.3rem 1.6rem;
+      display: grid;
+      grid-template-columns: 95px 1fr;
+      gap: 1.2rem;
+    }
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 1px;
+      line-height: 1.7;
+      padding-top: 2px;
+    }
+    .exp-role { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .exp-org {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent2);
+      letter-spacing: 1px;
+      margin-bottom: 0.45rem;
+    }
+    .exp-desc { font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 1.1rem;
+    }
+    .skill-group {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.3rem;
+    }
+    .skill-group-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .skill-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+    .skill-name { font-size: 12.5px; color: var(--text); }
+    .skill-bar { width: 60px; height: 3px; background: var(--bg3); border-radius: 2px; overflow: hidden; }
+    .skill-fill { height: 100%; border-radius: 2px; background: var(--accent); }
+    .skill-fill.p { background: #a78bfa; }
+    .skill-fill.g { background: var(--accent3); }
+
+    /* ── TWO-COL ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .info-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.3rem 1.5rem;
+    }
+    .info-card h3 {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .info-item { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: flex-start; }
+    .info-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 6px; flex-shrink: 0; }
+    .info-dot.p { background: #a78bfa; }
+    .info-dot.g { background: var(--accent3); }
+    .info-text p { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.45; }
+    .info-text span { font-size: 11.5px; color: var(--muted); }
+
+    /* ── CONTACT BAR ── */
+    .contact-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.2rem 2.5rem;
+    }
+    .contact-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+    .contact-inner h2 {
+      font-family: var(--mono);
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .contact-inner p { font-size: 12.5px; color: var(--muted); }
+    .contact-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .contact-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); background: rgba(0,212,255,0.05); }
+
+    /* ── FOOTER ── */
+    footer { text-align: center; padding: 2rem; }
+    footer p {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 2px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0.9rem 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .hero { grid-template-columns: 1fr; padding: 3rem 1.2rem 1.5rem; }
+      .hero-contact { display: none; }
+      .stats { padding: 0 1.2rem 2rem; gap: 1.5rem; }
+      .section { padding: 2rem 1.2rem; }
+      .two-col { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; }
+      .pub-card { flex-direction: column; }
+      .contact-bar { padding: 1.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">// alexandre audibert</div>
+  <div class="nav-links">
+    <a href="#publications">Publications</a>
+    <a href="#projets">Projets</a>
+    <a href="#experience">Expérience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Chercheur postdoctoral · IA &amp; Deep Learning</div>
+    <h1><strong>Alexandre Audibert</strong></h1>
+    <div class="hero-sub">// LIG - GETALP · Grenoble</div>
+    <p>Chercheur en intelligence artificielle spécialisé en deep learning, modèles multimodaux et compression de réseaux de neurones. Docteur de l'Université Grenoble Alpes, ingénieur ENSIMAG.</p>
+    <div class="hero-cta">
+      <a href="mailto:alexandre2audibert@gmail.com" class="btn-primary">Me contacter</a>
+      <a href="https://github.com/audibert-fra" class="btn-outline" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="hero-contact">
+    <div class="hero-contact-title">Contact</div>
+    <span><i class="icon">📍</i> Grenoble, France</span>
+    <a href="tel:+33627173305"><i class="icon">📞</i> 06 27 17 33 05</a>
+    <a href="mailto:alexandre2audibert@gmail.com"><i class="icon">✉️</i> alexandre2audibert@gmail.com</a>
+    <a href="https://github.com/audibert-fra" target="_blank"><i class="icon">💻</i> github.com/audibert-fra</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">PhD</div>
+    <div class="stat-label">Doctorat IA 2024</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5 ans</div>
+    <div class="stat-label">Recherche en DL</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">6</div>
+    <div class="stat-label">Publications</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">196<sup>/1557</sup></div>
+    <div class="stat-label">Kaggle top 13%</div>
+  </div>
+</div>
+
+<!-- PUBLICATIONS PRINCIPALES -->
+<div class="section" id="publications">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Publications (auteur principal)</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="pub-list">
+
+    <div class="pub-card">
+      <span class="pub-badge preprint">Preprint</span>
+      <div class="pub-content">
+        <div class="pub-title">Multi-Label Contrastive Learning: A Comprehensive Study</div>
+        <div class="pub-authors"><strong>Alexandre Audibert</strong>, Aurélien Gauffre, Massih-Reza Amini</div>
+        <div class="pub-venue">// arXiv · Novembre 2024</div>
+        <div class="pub-desc">Étude approfondie de l'apprentissage contrastif supervisé pour la classification multi-label. Analyse des fonctions de perte et de leur impact sur l'espace de représentation.</div>
+        <a class="pub-link" href="https://arxiv.org/abs/2412.00101" target="_blank">↗ arxiv.org/abs/2412.00101</a>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <span class="pub-badge conf">ECML/PKDD 2024</span>
+      <div class="pub-content">
+        <div class="pub-title">Exploring Contrastive Learning for Long-Tailed Multi-Label Text Classification</div>
+        <div class="pub-authors"><strong>Alexandre Audibert</strong>, Aurélien Gauffre, Massih-Reza Amini</div>
+        <div class="pub-venue">// ECML/PKDD 2024 · pp. 245–261</div>
+        <div class="pub-desc">Étude de l'apprentissage contrastif supervisé pour la classification de texte multi-label en contexte long-tailed. Identification de défis clés et proposition d'approches pour un espace de représentation robuste.</div>
+        <a class="pub-link" href="https://arxiv.org/abs/2404.08720" target="_blank">↗ arxiv.org/abs/2404.08720</a>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <span class="pub-badge conf">ACL Findings 2023</span>
+      <div class="pub-content">
+        <div class="pub-title">Low-Rank Updates of Pre-trained Weights for Multi-Task Learning</div>
+        <div class="pub-authors"><strong>Alexandre Audibert</strong>, Massih-Reza Amini, Konstantin Usevich, Marianne Clausel</div>
+        <div class="pub-venue">// Findings of ACL 2023 · Toronto</div>
+        <div class="pub-desc">Nouvelle approche de multi-task learning basée sur la décomposition tensorielle canonique (CP). Réduction significative des paramètres sans perte de performance sur le benchmark GLUE.</div>
+        <a class="pub-link" href="https://aclanthology.org/2023.findings-acl.476/" target="_blank">↗ aclanthology.org/2023.findings-acl.476</a>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <span class="pub-badge thesis">Thèse</span>
+      <div class="pub-content">
+        <div class="pub-title">Multi-target Learning for Predictive Justice</div>
+        <div class="pub-authors"><strong>Alexandre Audibert</strong></div>
+        <div class="pub-venue">// Université Grenoble Alpes · 2024 · NNT : 2024GRALM053</div>
+        <div class="pub-desc">Apprentissage multitâche pour la justice prédictive. Combinaison du multi-task learning avec des représentations tensorielles bas-rang pour améliorer l'efficacité paramétrique.</div>
+        <a class="pub-link" href="https://theses.hal.science/tel-05038128v1" target="_blank">↗ theses.hal.science/tel-05038128</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TRAVAUX COLLABORATIFS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>Travaux collaboratifs</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="pub-list">
+
+    <div class="pub-card">
+      <span class="pub-badge collab">LREC-COLING 2026</span>
+      <div class="pub-content">
+        <div class="pub-title">Pantagruel: Unified Self-Supervised Encoders for French Text and Speech</div>
+        <div class="pub-authors">Phuong-Hang Le, Valentin Pelloin, ..., <strong>Alexandre Audibert</strong>, Marco Dinarelli, Yannick Estève, et al.</div>
+        <div class="pub-venue">// LREC-COLING 2026 · LIG - GETALP</div>
+        <div class="pub-desc">Nouvelle famille de modèles encodeurs self-supervised pour le texte et la parole en français. Pré-entraînés sur de larges corpus incluant Wikipedia, OSCAR et INA-100k (100 000h d'audio de l'INA).</div>
+        <a class="pub-link" href="https://arxiv.org/abs/2601.05911" target="_blank">↗ arxiv.org/abs/2601.05911</a>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <span class="pub-badge collab">LREC-COLING 2024</span>
+      <div class="pub-content">
+        <div class="pub-title">Jargon: A Suite of Language Models and Evaluation Tasks for French Specialized Domains</div>
+        <div class="pub-authors">Vincent Segonne, Aidan Mannion, ..., <strong>Alexandre Audibert</strong>, Massih-Reza Amini, et al.</div>
+        <div class="pub-venue">// LREC-COLING 2024 · Turin · pp. 9463–9476</div>
+        <div class="pub-desc">Suite de modèles de langue et tâches d'évaluation pour les domaines spécialisés français : médical, juridique, scientifique. Benchmarks et modèles publiés en accès ouvert.</div>
+        <a class="pub-link" href="https://cea.hal.science/LIG_SIDCH_APTIKAL/hal-04535557v1" target="_blank">↗ hal-04535557</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJETS -->
+<div class="section" id="projets">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>Projets personnels</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <span class="proj-emoji">⬡</span>
+      <div class="proj-title">Kinematix</div>
+      <div class="proj-org">// Projet open source · 2023–2025</div>
+      <div class="proj-desc">Application d'analyse de mouvements (marche, course, squat) développée en collaboration avec un kinésithérapeute. Interface web interactive.</div>
+      <div class="proj-tags">
+        <span class="tag c">Python</span>
+        <span class="tag p">Deep Learning</span>
+        <span class="tag g">Open Source</span>
+      </div>
+      <div class="proj-metric">→ audibert-alexandre-fra.github.io/kinematix/</div>
+    </div>
+
+    <div class="project-card">
+      <span class="proj-emoji">🏆</span>
+      <div class="proj-title">Kaggle – Feedback Prize</div>
+      <div class="proj-org">// NLP · Classification de texte · 2022</div>
+      <div class="proj-desc">Classification de texte argumentatif sur des dissertations d'étudiants. Top 13% mondial sur 1557 participants.</div>
+      <div class="proj-tags">
+        <span class="tag p">Transformers</span>
+        <span class="tag p">HuggingFace</span>
+        <span class="tag c">Python</span>
+      </div>
+      <div class="proj-metric">→ Classement : 196 / 1557 participants</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>Expérience professionnelle</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-date">Sept. 2025<br>Présent</div>
+      <div>
+        <div class="exp-role">Chercheur postdoctoral</div>
+        <div class="exp-org">LIG - GETALP · Grenoble</div>
+        <div class="exp-desc">Développement de modèles de fondation multimodaux : texte, parole et pictogrammes.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Janv.–Sept.<br>2025</div>
+      <div>
+        <div class="exp-role">Ingénieur R&amp;D</div>
+        <div class="exp-org">D3S · Grenoble</div>
+        <div class="exp-desc">Deep learning pour l'analyse de pièces usinées. Développement logiciel backend.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2021–2024</div>
+      <div>
+        <div class="exp-role">Doctorant – Deep Learning &amp; NLP</div>
+        <div class="exp-org">LIG - APTIKAL · Université Grenoble Alpes</div>
+        <div class="exp-desc">Multi-task learning, fine-tuning efficace en paramètres, apprentissage contrastif multi-label. Compression de réseaux par décomposition tensorielle.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2022–2024</div>
+      <div>
+        <div class="exp-role">Enseignant vacataire</div>
+        <div class="exp-org">Université Grenoble Alpes</div>
+        <div class="exp-desc">Algèbre linéaire, analyse, introduction au deep learning – niveau licence.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2020</div>
+      <div>
+        <div class="exp-role">Stage – Machine Learning</div>
+        <div class="exp-org">ETHERA · Crolles</div>
+        <div class="exp-desc">Prédiction de données manquantes : gradient boosting, KNN, forêts aléatoires.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2>Compétences techniques</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+
+    <div class="skill-group">
+      <div class="skill-group-title">Deep Learning</div>
+      <div class="skill-item"><span class="skill-name">PyTorch</span><div class="skill-bar"><div class="skill-fill p" style="width:96%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Transformers</span><div class="skill-bar"><div class="skill-fill p" style="width:95%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">HuggingFace</span><div class="skill-bar"><div class="skill-fill p" style="width:92%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">CNN / multi-GPU</span><div class="skill-bar"><div class="skill-fill p" style="width:88%"></div></div></div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Recherche &amp; NLP</div>
+      <div class="skill-item"><span class="skill-name">Multi-task learning</span><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">LLM / Fine-tuning</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">NLP</span><div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Multimodal</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Langages &amp; Outils</div>
+      <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-fill g" style="width:97%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-bar"><div class="skill-fill g" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Git</span><div class="skill-bar"><div class="skill-fill g" style="width:90%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Docker</span><div class="skill-bar"><div class="skill-fill g" style="width:75%"></div></div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FORMATION -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2>Formation &amp; Profil</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="two-col">
+
+    <div class="info-card">
+      <h3>Formation</h3>
+      <div class="info-item">
+        <div class="info-dot"></div>
+        <div class="info-text">
+          <p>MSIAM – ENSIMAG Grenoble</p>
+          <span>Master of Science in Industrial and Applied Mathematics · 2021</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-dot p"></div>
+        <div class="info-text">
+          <p>Ingénieur informatique – ENSIMAG</p>
+          <span>Modélisation mathématique, image et simulation · 2018–2020</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-dot g"></div>
+        <div class="info-text">
+          <p>Licence de mathématiques – UGA</p>
+          <span>Université Grenoble Alpes · 2020</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Langues &amp; Centres d'intérêt</h3>
+      <div class="info-item">
+        <div class="info-dot"></div>
+        <div class="info-text">
+          <p>Français · Anglais B2</p>
+          <span>TOEIC : 815 pts</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-dot p"></div>
+        <div class="info-text">
+          <p>Judo – 2e DAN</p>
+          <span>Ancien sportif universitaire de haut niveau</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-dot g"></div>
+        <div class="info-text">
+          <p>Association IA – Fondateur &amp; Trésorier</p>
+          <span>Création, organisation de cours · 2020</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-bar" id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2>Ouvert aux opportunités de recherche &amp; R&amp;D</h2>
+      <p>Postdoc · Ingénieur R&amp;D IA · Collaboration académique</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="https://github.com/audibert-fra" target="_blank">💻 GitHub</a>
+      <a class="contact-link" href="https://scholar.google.com/citations?user=W8aMnu8AAAAJ" target="_blank">🎓 Scholar</a>
+      <a class="contact-link" href="mailto:alexandre2audibert@gmail.com">✉️ Email</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>// alexandre audibert · portfolio · grenoble 2026</p>
+</footer>
+
+</body>
+</html>

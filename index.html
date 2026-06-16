@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alexandre Audibert – Chercheur IA & Deep Learning</title>
+  <title>Alexandre Audibert</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
@@ -11,16 +11,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #080c18;
-      --bg2:     #0d1224;
-      --bg3:     #141a30;
-      --accent:  #00d4ff;
+      --bg:      #f8f7f4;
+      --bg2:     #ffffff;
+      --bg3:     #f1efe9;
+      --accent:  #2563eb;
       --accent2: #7c3aed;
-      --accent3: #10b981;
-      --amber:   #f59e0b;
-      --text:    #e2e8f0;
-      --muted:   #64748b;
-      --border:  rgba(0,212,255,0.13);
+      --accent3: #059669;
+      --amber:   #d97706;
+      --text:    #1e1e1e;
+      --muted:   #6b7280;
+      --border:  rgba(0,0,0,0.09);
       --mono:    'Space Mono', monospace;
       --sans:    'DM Sans', sans-serif;
     }
@@ -36,14 +36,13 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2.5rem;
       border-bottom: 1px solid var(--border);
-      background: rgba(8,12,24,0.97);
+      background: rgba(248,247,244,0.97);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -66,7 +65,6 @@
     }
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
     .hero {
       padding: 5rem 2.5rem 2.5rem;
       max-width: 960px;
@@ -123,9 +121,9 @@
     .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
       background: var(--accent);
-      color: #080c18;
+      color: #fff;
       padding: 0.65rem 1.6rem;
-      border-radius: 4px;
+      border-radius: 6px;
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 700;
@@ -138,9 +136,9 @@
     .btn-outline {
       background: transparent;
       color: var(--accent);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(37,99,235,0.3);
       padding: 0.65rem 1.6rem;
-      border-radius: 4px;
+      border-radius: 6px;
       font-family: var(--mono);
       font-size: 12px;
       text-decoration: none;
@@ -181,7 +179,6 @@
     .hero-contact a:hover { color: var(--accent); }
     .hero-contact .icon { font-style: normal; width: 14px; text-align: center; }
 
-    /* ── STATS ── */
     .stats {
       display: flex;
       gap: 2.5rem;
@@ -208,7 +205,6 @@
       text-transform: uppercase;
     }
 
-    /* ── SECTIONS ── */
     .section {
       padding: 3rem 2.5rem;
       max-width: 960px;
@@ -236,7 +232,6 @@
     }
     .section-line { flex: 1; height: 1px; background: var(--border); }
 
-    /* ── PUBLICATIONS ── */
     .pub-list { display: flex; flex-direction: column; gap: 1.1rem; }
     .pub-card {
       background: var(--bg2);
@@ -248,7 +243,7 @@
       align-items: flex-start;
       transition: border-color 0.25s, transform 0.2s;
     }
-    .pub-card:hover { border-color: rgba(0,212,255,0.35); transform: translateY(-1px); }
+    .pub-card:hover { border-color: rgba(37,99,235,0.3); transform: translateY(-1px); }
     .pub-badge {
       flex-shrink: 0;
       font-family: var(--mono);
@@ -259,10 +254,10 @@
       margin-top: 2px;
       white-space: nowrap;
     }
-    .pub-badge.conf    { background: rgba(0,212,255,0.08);   color: var(--accent);  border: 1px solid rgba(0,212,255,0.2); }
-    .pub-badge.preprint{ background: rgba(124,58,237,0.08);  color: #a78bfa;        border: 1px solid rgba(124,58,237,0.2); }
-    .pub-badge.thesis  { background: rgba(16,185,129,0.08);  color: var(--accent3); border: 1px solid rgba(16,185,129,0.2); }
-    .pub-badge.collab  { background: rgba(245,158,11,0.08);  color: var(--amber);   border: 1px solid rgba(245,158,11,0.2); }
+    .pub-badge.conf    { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .pub-badge.preprint{ background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; }
+    .pub-badge.thesis  { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .pub-badge.collab  { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
     .pub-content { flex: 1; min-width: 0; }
     .pub-title {
       font-size: 0.92rem;
@@ -290,9 +285,8 @@
       gap: 4px;
       transition: opacity 0.2s;
     }
-    .pub-link:hover { opacity: 0.75; }
+    .pub-link:hover { opacity: 0.7; }
 
-    /* ── PROJECTS ── */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -316,7 +310,7 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-    .project-card:hover { border-color: rgba(0,212,255,0.4); transform: translateY(-2px); }
+    .project-card:hover { border-color: rgba(37,99,235,0.35); transform: translateY(-2px); }
     .project-card:hover::before { opacity: 1; }
     .proj-emoji { font-size: 22px; margin-bottom: 1rem; display: block; }
     .proj-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--text); }
@@ -336,9 +330,9 @@
       border-radius: 3px;
       letter-spacing: 1px;
     }
-    .tag.c { background: rgba(0,212,255,0.07);  color: var(--accent);  border: 1px solid rgba(0,212,255,0.18); }
-    .tag.p { background: rgba(124,58,237,0.07); color: #a78bfa;        border: 1px solid rgba(124,58,237,0.18); }
-    .tag.g { background: rgba(16,185,129,0.07); color: var(--accent3); border: 1px solid rgba(16,185,129,0.18); }
+    .tag.c { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .tag.p { background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; }
+    .tag.g { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
     .proj-metric {
       font-family: var(--mono);
       font-size: 11px;
@@ -348,7 +342,6 @@
       border-top: 1px solid var(--border);
     }
 
-    /* ── EXPERIENCE ── */
     .exp-list { display: flex; flex-direction: column; gap: 1.1rem; }
     .exp-item {
       background: var(--bg2);
@@ -377,7 +370,6 @@
     }
     .exp-desc { font-size: 12.5px; color: var(--muted); line-height: 1.65; }
 
-    /* ── SKILLS ── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
@@ -399,12 +391,11 @@
     }
     .skill-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
     .skill-name { font-size: 12.5px; color: var(--text); }
-    .skill-bar { width: 60px; height: 3px; background: var(--bg3); border-radius: 2px; overflow: hidden; }
+    .skill-bar { width: 60px; height: 3px; background: #e5e7eb; border-radius: 2px; overflow: hidden; }
     .skill-fill { height: 100%; border-radius: 2px; background: var(--accent); }
-    .skill-fill.p { background: #a78bfa; }
+    .skill-fill.p { background: #7c3aed; }
     .skill-fill.g { background: var(--accent3); }
 
-    /* ── TWO-COL ── */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .info-card {
       background: var(--bg2);
@@ -422,12 +413,11 @@
     }
     .info-item { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: flex-start; }
     .info-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 6px; flex-shrink: 0; }
-    .info-dot.p { background: #a78bfa; }
+    .info-dot.p { background: #7c3aed; }
     .info-dot.g { background: var(--accent3); }
     .info-text p { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.45; }
     .info-text span { font-size: 11.5px; color: var(--muted); }
 
-    /* ── CONTACT BAR ── */
     .contact-bar {
       background: var(--bg2);
       border-top: 1px solid var(--border);
@@ -456,7 +446,7 @@
       font-size: 11px;
       color: var(--accent);
       text-decoration: none;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(37,99,235,0.25);
       padding: 0.5rem 1rem;
       border-radius: 4px;
       display: inline-flex;
@@ -464,9 +454,8 @@
       gap: 7px;
       transition: border-color 0.2s, background 0.2s;
     }
-    .contact-link:hover { border-color: var(--accent); background: rgba(0,212,255,0.05); }
+    .contact-link:hover { border-color: var(--accent); background: #eff6ff; }
 
-    /* ── FOOTER ── */
     footer { text-align: center; padding: 2rem; }
     footer p {
       font-family: var(--mono);
@@ -475,7 +464,6 @@
       letter-spacing: 2px;
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav { padding: 0.9rem 1.2rem; }
       .nav-links { gap: 1rem; }
@@ -492,7 +480,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">// alexandre audibert</div>
   <div class="nav-links">
@@ -503,7 +490,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <div class="hero-tag">Chercheur postdoctoral · IA &amp; Deep Learning</div>
@@ -523,27 +509,13 @@
   </div>
 </div>
 
-<!-- STATS -->
 <div class="stats">
-  <div class="stat">
-    <div class="stat-num">PhD</div>
-    <div class="stat-label">Doctorat IA 2024</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">5 ans</div>
-    <div class="stat-label">Recherche en DL</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">6</div>
-    <div class="stat-label">Publications</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">196<sup>/1557</sup></div>
-    <div class="stat-label">Kaggle top 13%</div>
-  </div>
+  <div class="stat"><div class="stat-num">PhD</div><div class="stat-label">Doctorat IA 2024</div></div>
+  <div class="stat"><div class="stat-num">5 ans</div><div class="stat-label">Recherche en DL</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">Publications</div></div>
+  <div class="stat"><div class="stat-num">196<sup>/1557</sup></div><div class="stat-label">Kaggle top 13%</div></div>
 </div>
 
-<!-- PUBLICATIONS PRINCIPALES -->
 <div class="section" id="publications">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -551,7 +523,6 @@
     <div class="section-line"></div>
   </div>
   <div class="pub-list">
-
     <div class="pub-card">
       <span class="pub-badge preprint">Preprint</span>
       <div class="pub-content">
@@ -562,18 +533,16 @@
         <a class="pub-link" href="https://arxiv.org/abs/2412.00101" target="_blank">↗ arxiv.org/abs/2412.00101</a>
       </div>
     </div>
-
     <div class="pub-card">
       <span class="pub-badge conf">ECML/PKDD 2024</span>
       <div class="pub-content">
         <div class="pub-title">Exploring Contrastive Learning for Long-Tailed Multi-Label Text Classification</div>
         <div class="pub-authors"><strong>Alexandre Audibert</strong>, Aurélien Gauffre, Massih-Reza Amini</div>
         <div class="pub-venue">// ECML/PKDD 2024 · pp. 245–261</div>
-        <div class="pub-desc">Étude de l'apprentissage contrastif supervisé pour la classification de texte multi-label en contexte long-tailed. Identification de défis clés et proposition d'approches pour un espace de représentation robuste.</div>
+        <div class="pub-desc">Étude de l'apprentissage contrastif supervisé pour la classification de texte multi-label en contexte long-tailed.</div>
         <a class="pub-link" href="https://arxiv.org/abs/2404.08720" target="_blank">↗ arxiv.org/abs/2404.08720</a>
       </div>
     </div>
-
     <div class="pub-card">
       <span class="pub-badge conf">ACL Findings 2023</span>
       <div class="pub-content">
@@ -584,22 +553,19 @@
         <a class="pub-link" href="https://aclanthology.org/2023.findings-acl.476/" target="_blank">↗ aclanthology.org/2023.findings-acl.476</a>
       </div>
     </div>
-
     <div class="pub-card">
       <span class="pub-badge thesis">Thèse</span>
       <div class="pub-content">
         <div class="pub-title">Multi-target Learning for Predictive Justice</div>
         <div class="pub-authors"><strong>Alexandre Audibert</strong></div>
         <div class="pub-venue">// Université Grenoble Alpes · 2024 · NNT : 2024GRALM053</div>
-        <div class="pub-desc">Apprentissage multitâche pour la justice prédictive. Combinaison du multi-task learning avec des représentations tensorielles bas-rang pour améliorer l'efficacité paramétrique.</div>
+        <div class="pub-desc">Apprentissage multitâche pour la justice prédictive. Combinaison du multi-task learning avec des représentations tensorielles bas-rang.</div>
         <a class="pub-link" href="https://theses.hal.science/tel-05038128v1" target="_blank">↗ theses.hal.science/tel-05038128</a>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- TRAVAUX COLLABORATIFS -->
 <div class="section">
   <div class="section-header">
     <span class="section-num">02</span>
@@ -607,33 +573,29 @@
     <div class="section-line"></div>
   </div>
   <div class="pub-list">
-
     <div class="pub-card">
       <span class="pub-badge collab">LREC-COLING 2026</span>
       <div class="pub-content">
         <div class="pub-title">Pantagruel: Unified Self-Supervised Encoders for French Text and Speech</div>
         <div class="pub-authors">Phuong-Hang Le, Valentin Pelloin, ..., <strong>Alexandre Audibert</strong>, Marco Dinarelli, Yannick Estève, et al.</div>
         <div class="pub-venue">// LREC-COLING 2026 · LIG - GETALP</div>
-        <div class="pub-desc">Nouvelle famille de modèles encodeurs self-supervised pour le texte et la parole en français. Pré-entraînés sur de larges corpus incluant Wikipedia, OSCAR et INA-100k (100 000h d'audio de l'INA).</div>
+        <div class="pub-desc">Nouvelle famille de modèles encodeurs self-supervised pour le texte et la parole en français. Pré-entraînés sur de larges corpus incluant Wikipedia, OSCAR et INA-100k.</div>
         <a class="pub-link" href="https://arxiv.org/abs/2601.05911" target="_blank">↗ arxiv.org/abs/2601.05911</a>
       </div>
     </div>
-
     <div class="pub-card">
       <span class="pub-badge collab">LREC-COLING 2024</span>
       <div class="pub-content">
         <div class="pub-title">Jargon: A Suite of Language Models and Evaluation Tasks for French Specialized Domains</div>
         <div class="pub-authors">Vincent Segonne, Aidan Mannion, ..., <strong>Alexandre Audibert</strong>, Massih-Reza Amini, et al.</div>
         <div class="pub-venue">// LREC-COLING 2024 · Turin · pp. 9463–9476</div>
-        <div class="pub-desc">Suite de modèles de langue et tâches d'évaluation pour les domaines spécialisés français : médical, juridique, scientifique. Benchmarks et modèles publiés en accès ouvert.</div>
+        <div class="pub-desc">Suite de modèles de langue et tâches d'évaluation pour les domaines spécialisés français : médical, juridique, scientifique.</div>
         <a class="pub-link" href="https://cea.hal.science/LIG_SIDCH_APTIKAL/hal-04535557v1" target="_blank">↗ hal-04535557</a>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- PROJETS -->
 <div class="section" id="projets">
   <div class="section-header">
     <span class="section-num">03</span>
@@ -641,7 +603,6 @@
     <div class="section-line"></div>
   </div>
   <div class="projects-grid">
-
     <div class="project-card">
       <span class="proj-emoji">⬡</span>
       <div class="proj-title">Kinematix</div>
@@ -652,9 +613,8 @@
         <span class="tag p">Deep Learning</span>
         <span class="tag g">Open Source</span>
       </div>
-        <div class="proj-metric"><a href="https://audibert-alexandre-fra.github.io/kinematix/" target="_blank" style="color:var(--accent3);text-decoration:none;">→ audibert-alexandre-fra.github.io/kinematix/ ↗</a></div>
+      <div class="proj-metric"><a href="https://audibert-alexandre-fra.github.io/kinematix/" target="_blank" style="color:var(--accent3);text-decoration:none;">→ audibert-alexandre-fra.github.io/kinematix/ ↗</a></div>
     </div>
-
     <div class="project-card">
       <span class="proj-emoji">🏆</span>
       <div class="proj-title">Kaggle – Feedback Prize</div>
@@ -667,11 +627,9 @@
       </div>
       <div class="proj-metric">→ Classement : 196 / 1557 participants</div>
     </div>
-
   </div>
 </div>
 
-<!-- EXPERIENCE -->
 <div class="section" id="experience">
   <div class="section-header">
     <span class="section-num">04</span>
@@ -679,7 +637,6 @@
     <div class="section-line"></div>
   </div>
   <div class="exp-list">
-
     <div class="exp-item">
       <div class="exp-date">Sept. 2025<br>Présent</div>
       <div>
@@ -688,7 +645,6 @@
         <div class="exp-desc">Développement de modèles de fondation multimodaux : texte, parole et pictogrammes.</div>
       </div>
     </div>
-
     <div class="exp-item">
       <div class="exp-date">Janv.–Sept.<br>2025</div>
       <div>
@@ -697,7 +653,6 @@
         <div class="exp-desc">Deep learning pour l'analyse de pièces usinées. Développement logiciel backend.</div>
       </div>
     </div>
-
     <div class="exp-item">
       <div class="exp-date">2021–2024</div>
       <div>
@@ -706,7 +661,6 @@
         <div class="exp-desc">Multi-task learning, fine-tuning efficace en paramètres, apprentissage contrastif multi-label. Compression de réseaux par décomposition tensorielle.</div>
       </div>
     </div>
-
     <div class="exp-item">
       <div class="exp-date">2022–2024</div>
       <div>
@@ -715,7 +669,6 @@
         <div class="exp-desc">Algèbre linéaire, analyse, introduction au deep learning – niveau licence.</div>
       </div>
     </div>
-
     <div class="exp-item">
       <div class="exp-date">2020</div>
       <div>
@@ -724,11 +677,9 @@
         <div class="exp-desc">Prédiction de données manquantes : gradient boosting, KNN, forêts aléatoires.</div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- SKILLS -->
 <div class="section">
   <div class="section-header">
     <span class="section-num">05</span>
@@ -736,7 +687,6 @@
     <div class="section-line"></div>
   </div>
   <div class="skills-grid">
-
     <div class="skill-group">
       <div class="skill-group-title">Deep Learning</div>
       <div class="skill-item"><span class="skill-name">PyTorch</span><div class="skill-bar"><div class="skill-fill p" style="width:96%"></div></div></div>
@@ -744,7 +694,6 @@
       <div class="skill-item"><span class="skill-name">HuggingFace</span><div class="skill-bar"><div class="skill-fill p" style="width:92%"></div></div></div>
       <div class="skill-item"><span class="skill-name">CNN / multi-GPU</span><div class="skill-bar"><div class="skill-fill p" style="width:88%"></div></div></div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Recherche &amp; NLP</div>
       <div class="skill-item"><span class="skill-name">Multi-task learning</span><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
@@ -752,7 +701,6 @@
       <div class="skill-item"><span class="skill-name">NLP</span><div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div></div>
       <div class="skill-item"><span class="skill-name">Multimodal</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Langages &amp; Outils</div>
       <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-fill g" style="width:97%"></div></div></div>
@@ -760,11 +708,9 @@
       <div class="skill-item"><span class="skill-name">Git</span><div class="skill-bar"><div class="skill-fill g" style="width:90%"></div></div></div>
       <div class="skill-item"><span class="skill-name">Docker</span><div class="skill-bar"><div class="skill-fill g" style="width:75%"></div></div></div>
     </div>
-
   </div>
 </div>
 
-<!-- FORMATION -->
 <div class="section">
   <div class="section-header">
     <span class="section-num">06</span>
@@ -772,7 +718,6 @@
     <div class="section-line"></div>
   </div>
   <div class="two-col">
-
     <div class="info-card">
       <h3>Formation</h3>
       <div class="info-item">
@@ -797,7 +742,6 @@
         </div>
       </div>
     </div>
-
     <div class="info-card">
       <h3>Langues &amp; Centres d'intérêt</h3>
       <div class="info-item">
@@ -822,11 +766,9 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- CONTACT -->
 <div class="contact-bar" id="contact">
   <div class="contact-inner">
     <div>
